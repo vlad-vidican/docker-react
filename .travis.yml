@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t vlad-vidican/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true vlad-vidican/docker-react npm run test
